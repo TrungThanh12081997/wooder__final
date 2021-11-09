@@ -1,0 +1,101 @@
+@-ms-viewport {
+    width: device-width;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    // => 10px = 1rem
+    @include customscroll(15px, $yellow-cl, rgb(92, 91, 91));
+}
+
+body {
+    font-size: 16px;
+    width: 100%;
+    max-width: $container-max-width;
+    margin: auto;
+    @include text(var(--body16-fs), ir, var(--body16-lh), $black-cl, none); // tuỳ chỉnh
+    background: $white-cl;
+    position: relative;
+    --pdSection: 90px;
+    scroll-behavior: smooth;
+    main {
+        width: 100%;
+        margin: 0 auto;
+        section {
+            &.pd {
+                padding: var(--pdSection) 0;
+                @media(max-width: 992px) {
+                    --pdSection: 40px;
+                }
+            }
+        }
+    }
+    .container-fluid {
+        width: 100%;
+        padding-right: var(--gap);
+        padding-left: var(--gap);
+        margin-right: auto;
+        margin-left: auto;
+        @include xs {
+            padding-right: calc(var(--gap) / 2);
+            padding-left: calc(var(--gap) / 2);
+        }
+    }
+    .container {
+        width: 100%;
+        padding-right: calc(var(--gap) / 2);
+        padding-left: calc(var(--gap) / 2);
+        margin-right: auto;
+        margin-left: auto;
+    }
+    @media (max-width: $xxs-min) {
+        .container {
+            // max-width: 540px;
+        }
+    }
+    @media (max-width: $xs-max) {
+        .container {
+            max-width: 720px;
+        }
+    }
+    @media (max-width: $sm-min) {
+        .container {
+            max-width: 100%;
+        }
+    }
+    @media (max-width: $md-min) {
+        .container {
+            max-width: $container-width;
+        }
+    }
+    .mainwrapper {
+        width: 100%;
+        margin: auto;
+        @include visible;
+    }
+    @include lg {
+        // CSS responsive large desktop
+    }
+    @include md {
+        // CSS responsive desktop
+    }
+    @include sm {
+        // CSS responsive tablet
+    }
+    @include xs {
+        // CSS responsive mobile
+        --pdSection: 60px;
+    }
+    @include xxs {
+        // CSS responsive small mobile
+    }
+}
